@@ -1,23 +1,34 @@
 import { useState } from "react";
 import ReactDOM from "react-dom/client";
 
-// const fruit = [
-//   "apple",
-//   "orange",
-//   "pear",
-//   "grapefruit",
-//   "lemon",
-//   "apricot",
-//   "banana",
-//   "strawberry",
-// ];
+const fruit = [
+  "apple",
+  "orange",
+  "pear",
+  "grapefruit",
+  "lemon",
+  "apricot",
+  "banana",
+  "strawberry",
+];
 
-// function randomFruit() {
-//   return fruit[Math.floor(Math.random() * fruit.length)];
-// }
+function randomFruit() {
+  return fruit[Math.floor(Math.random() * fruit.length)];
+}
+
+function TodoItem({ item }) {
+  return <li>{item}</li>;
+}
 
 function TodoList({ items }) {
-  return <ul></ul>;
+  console.log(items);
+  return (
+    <ul style={{color : "green"}}>
+      {items.map((item) => (
+        <TodoItem item={item}></TodoItem>
+      ))}
+    </ul>
+  );
 }
 
 function App() {
@@ -25,8 +36,10 @@ function App() {
 
   return (
     <div>
-      <TodoList items={items} />
-      <button onClick={() => {}}>Click me</button>
+      <button onClick={() => setItems(items.concat([randomFruit()]))}>
+        Click me
+      </button>
+      <TodoList items={items}/>
     </div>
   );
 }
